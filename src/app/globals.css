@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Primary palette */
+  --color-primary:           #1DB584;
+  --color-primary-dark:      #006C4C;
+  --color-primary-container: #A7F3D0;
+
+  /* Secondary / Intelligence palette */
+  --color-secondary:           #7C4DFF;
+  --color-secondary-container: #EFECFF;
+  --color-on-secondary:        #FFFFFF;
+  --color-on-secondary-container: #4A148C;
+
+  /* Surface hierarchy */
+  --surface-bg:               #F7F8FA;
+  --surface-low:              #F7F8FA;
+  --surface-card:             #FFFFFF;
+  --surface-panel:            #EFECFF;
+
+  /* Text */
+  --text-primary:   #1A1A2E;
+  --text-secondary: #6B7280;
+  --text-muted:     #9CA3AF;
+  --text-inverse:   #FFFFFF;
+
+  /* Semantic */
+  --success: #1DB584;
+  --warning: #F59E0B;
+  --danger:  #EF4444;
+
+  /* Elevation */
+  --shadow-ambient: 0 12px 32px -4px rgba(26, 26, 46, 0.06);
+  --shadow-float:   0 4px 16px -2px rgba(26, 26, 46, 0.10);
+
+  /* Radii */
+  --radius-btn:  8px;
+  --radius-card: 12px;
+  --radius-pill: 99px;
+
+  /* Transition */
+  --transition: 200ms ease-out;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--surface-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography helpers ────────────────────────────────────── */
+.font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
