@@ -4,14 +4,14 @@ import { StudentProfile } from '@/types/student';
 
 export function useStudentProfile() {
   const [profile, setProfile]   = useState<StudentProfile | null>(null);
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError]       = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError]       = useState<string | null>(null);
 
   useEffect(() => {
-    api.get<{ data: { student: StudentProfile } }>('/students/me/profile')
+    api.get('/students/me/profile')
       .then((res) => setProfile(res.data.data.student))
       .catch(() => setError('Failed to load profile.'))
-      .finally(() => setLoading(false));
+      .finally(() => setIsLoading(false));
   }, []);
 
   return { profile, isLoading, error };

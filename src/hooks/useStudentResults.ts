@@ -1,28 +1,22 @@
 import { useEffect, useState } from 'react';
 import api from '@/lib/api';
-import { Result, ResultsSummary } from '@/types/results';
+import { ResultsResponse } from '@/types/results';
 
 export function useStudentResults(term?: string, session?: string) {
-  const [results, setResults]   = useState<Result[]>([]);
-  const [summary, setSummary]   = useState<ResultsSummary | null>(null);
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError]       = useState('');
+  const [data, setData]         = useState<ResultsResponse | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError]       = useState<string | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams();
-    if (term)    params.append('term', term);
-    if (session) params.append('session', session);
+    if (term)    params.set('term', term);
+    if (session) params.set('session', session);
 
-    const query = params.toString() ? `?${params.toString()}` : '';
-
-    api.get<{ data: { results: Result[]; summary: ResultsSummary } }>(`/students/me/results${query}`)
-      .then((res) => {
-        setResults(res.data.data.results);
-        setSummary(res.data.data.summary);
-      })
+    api.get(`/students/me/results?${params.toString()}`)
+      .then((res) => setData(res.data.data))
       .catch(() => setError('Failed to load results.'))
-      .finally(() => setLoading(false));
+      .finally(() => setIsLoading(false));
   }, [term, session]);
 
-  return { results, summary, isLoading, error };
+  return { results: data?.results ?? [], summary: data?.summary ?? null, isLoading, error };
 }

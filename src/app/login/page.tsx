@@ -40,63 +40,54 @@ export default function LoginPage() {
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
+    <div className="login-wrapper" style={{ fontFamily: 'Inter, sans-serif' }}>
 
-      {/* ── Left Panel ─────────────────────────────────────── */}
-      <div style={{
-        width: '38%',
-        minWidth: 320,
-        background: 'linear-gradient(160deg, #1DB584 0%, #006C4C 100%)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '48px 40px',
-        color: '#fff',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        {/* Decorative circles */}
-        <div style={{
+      {/* ── Left Branding Panel ─────────────────────────────── */}
+      <div
+        className="login-left"
+        style={{
+          background: 'linear-gradient(160deg, #1DB584 0%, #006C4C 100%)',
+          color: '#fff',
+        }}
+      >
+        {/* Decorative circles — desktop only */}
+        <div className="login-left-quote" style={{
           position: 'absolute', top: -80, right: -80,
           width: 260, height: 260, borderRadius: '50%',
           background: 'rgba(255,255,255,0.06)',
-        }}/>
-        <div style={{
+        }} />
+        <div className="login-left-quote" style={{
           position: 'absolute', bottom: -60, left: -60,
           width: 200, height: 200, borderRadius: '50%',
           background: 'rgba(255,255,255,0.06)',
-        }}/>
+        }} />
 
-        {/* Logo */}
+        {/* Logo — always visible */}
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{
-            width: 52, height: 52, borderRadius: 14,
+            width: 48, height: 48, borderRadius: 13,
             background: '#fff',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            marginBottom: 20,
+            marginBottom: 18,
           }}>
             <span style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: 13,
-              fontWeight: 800,
-              color: '#1DB584',
-              letterSpacing: '-0.02em',
+              fontSize: 13, fontWeight: 800,
+              color: '#1DB584', letterSpacing: '-0.02em',
             }}>aspire</span>
           </div>
           <h1 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontSize: 32,
-            fontWeight: 800,
-            marginBottom: 6,
-            letterSpacing: '-0.02em',
+            fontSize: 30, fontWeight: 800,
+            marginBottom: 4, letterSpacing: '-0.02em',
           }}>Aspire</h1>
-          <p style={{ fontSize: 13, opacity: 0.75, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <p style={{ fontSize: 12, opacity: 0.7, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             Cognitive Sanctuary
           </p>
         </div>
 
-        {/* Quote card */}
-        <div style={{
+        {/* Quote card — desktop only */}
+        <div className="login-left-quote" style={{
           position: 'relative', zIndex: 1,
           background: 'rgba(255,255,255,0.12)',
           backdropFilter: 'blur(12px)',
@@ -107,61 +98,49 @@ export default function LoginPage() {
           <svg width="22" height="18" viewBox="0 0 22 18" fill="rgba(255,255,255,0.5)" style={{ marginBottom: 10 }}>
             <path d="M0 18V10.8C0 7.6 .867 4.9 2.6 2.7 4.333.9 6.7 0 9.7 0v3c-1.667 0-3 .667-4 2-1 1.267-1.5 2.8-1.5 4.6H7V18H0Zm12 0V10.8c0-3.2.867-5.9 2.6-8.1C16.333.9 18.7 0 21.7 0v3c-1.667 0-3 .667-4 2-1 1.267-1.5 2.8-1.5 4.6H19V18h-7Z"/>
           </svg>
-          <p style={{
-            fontSize: 14,
-            fontStyle: 'italic',
-            lineHeight: 1.65,
-            opacity: 0.9,
-          }}>
+          <p style={{ fontSize: 14, fontStyle: 'italic', lineHeight: 1.65, opacity: 0.9 }}>
             Precision in thought, clarity in action. Empowering the next generation of creative intelligence.
           </p>
         </div>
 
-        {/* Footer */}
-        <p style={{ position: 'relative', zIndex: 1, fontSize: 11, opacity: 0.45, letterSpacing: '0.06em', fontFamily: "'JetBrains Mono', monospace" }}>
+        {/* Footer — desktop only */}
+        <p className="login-left-footer" style={{
+          position: 'relative', zIndex: 1,
+          fontSize: 11, opacity: 0.45,
+          letterSpacing: '0.06em',
+          fontFamily: "'JetBrains Mono', monospace",
+        }}>
           SYSTEM.V.4.0.2 // ENCRYPTED
         </p>
       </div>
 
-      {/* ── Right Panel ────────────────────────────────────── */}
-      <div style={{
-        flex: 1,
-        background: '#FFFFFF',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '48px 64px',
-        position: 'relative',
-      }}>
+      {/* ── Right Form Panel ────────────────────────────────── */}
+      <div className="login-right">
 
         {/* School context */}
         {config && (
           <p style={{ fontSize: 13, color: '#9CA3AF', marginBottom: 4 }}>
-            Signing into <span style={{ color: '#1DB584', fontWeight: 600 }}>{config.name}</span>
+            Signing into <span style={{ color: 'var(--color-primary, #1DB584)', fontWeight: 600 }}>{config.name}</span>
           </p>
         )}
 
         <h2 style={{
           fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: 28,
-          fontWeight: 700,
-          color: '#1A1A2E',
-          marginBottom: 6,
+          fontSize: 26, fontWeight: 700,
+          color: '#1A1A2E', marginBottom: 6,
           letterSpacing: '-0.02em',
         }}>Welcome back</h2>
-        <p style={{ color: '#6B7280', fontSize: 14, marginBottom: 32 }}>
-          Sign in to Aspire
+        <p style={{ color: '#6B7280', fontSize: 14, marginBottom: 28 }}>
+          Sign in to your Aspire account
         </p>
 
         {/* Role Toggle */}
         <div style={{
           display: 'flex',
           background: '#F7F8FA',
-          borderRadius: 10,
-          padding: 4,
+          borderRadius: 10, padding: 4,
           marginBottom: 28,
-          width: 'fit-content',
-          gap: 4,
+          width: 'fit-content', gap: 4,
         }}>
           {(['student', 'admin'] as const).map((r) => (
             <button
@@ -169,11 +148,8 @@ export default function LoginPage() {
               onClick={() => { setRole(r); setIdentifier(''); setError(''); }}
               style={{
                 padding: '8px 20px',
-                borderRadius: 7,
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: 13,
-                fontWeight: 600,
+                borderRadius: 7, border: 'none', cursor: 'pointer',
+                fontSize: 13, fontWeight: 600,
                 textTransform: 'capitalize',
                 transition: '200ms ease-out',
                 background: role === r ? '#FFFFFF' : 'transparent',
@@ -184,10 +160,14 @@ export default function LoginPage() {
           ))}
         </div>
 
-        <form onSubmit={handleSubmit} style={{ maxWidth: 360 }}>
+        <form onSubmit={handleSubmit} style={{ maxWidth: 360, width: '100%' }}>
           {/* Identifier */}
           <div style={{ marginBottom: 18 }}>
-            <label style={{ display: 'block', fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', color: '#6B7280', textTransform: 'uppercase', marginBottom: 8 }}>
+            <label style={{
+              display: 'block', fontSize: 11, fontWeight: 600,
+              letterSpacing: '0.07em', color: '#6B7280',
+              textTransform: 'uppercase', marginBottom: 8,
+            }}>
               {role === 'student' ? 'Registration Number' : 'Email Address'}
             </label>
             <input
@@ -197,19 +177,13 @@ export default function LoginPage() {
               placeholder={role === 'student' ? 'e.g. ASP/2024/001' : 'name@school.edu'}
               required
               style={{
-                width: '100%',
-                padding: '12px 14px',
-                fontSize: 14,
-                border: 'none',
-                borderBottom: '1.5px solid #E5E7EB',
-                borderRadius: 0,
-                outline: 'none',
-                background: 'transparent',
-                color: '#1A1A2E',
-                transition: '200ms ease-out',
+                width: '100%', padding: '12px 14px', fontSize: 14,
+                border: 'none', borderBottom: '1.5px solid #E5E7EB',
+                borderRadius: 0, outline: 'none', background: 'transparent',
+                color: '#1A1A2E', transition: '200ms ease-out',
                 fontFamily: 'Inter, sans-serif',
               }}
-              onFocus={(e) => { (e.target as HTMLInputElement).style.borderBottom = '1.5px solid #1DB584'; }}
+              onFocus={(e) => { (e.target as HTMLInputElement).style.borderBottom = '1.5px solid var(--color-primary, #1DB584)'; }}
               onBlur={(e) => { (e.target as HTMLInputElement).style.borderBottom = '1.5px solid #E5E7EB'; }}
             />
           </div>
@@ -220,7 +194,7 @@ export default function LoginPage() {
               <label style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', color: '#6B7280', textTransform: 'uppercase' }}>
                 Password
               </label>
-              <span style={{ fontSize: 12, color: '#1DB584', fontWeight: 600, cursor: 'pointer' }}>
+              <span style={{ fontSize: 12, color: 'var(--color-primary, #1DB584)', fontWeight: 600, cursor: 'pointer' }}>
                 Forgot password?
               </span>
             </div>
@@ -232,19 +206,13 @@ export default function LoginPage() {
                 placeholder="••••••••"
                 required
                 style={{
-                  width: '100%',
-                  padding: '12px 40px 12px 14px',
-                  fontSize: 14,
-                  border: 'none',
-                  borderBottom: '1.5px solid #E5E7EB',
-                  borderRadius: 0,
-                  outline: 'none',
-                  background: 'transparent',
-                  color: '#1A1A2E',
-                  transition: '200ms ease-out',
+                  width: '100%', padding: '12px 40px 12px 14px', fontSize: 14,
+                  border: 'none', borderBottom: '1.5px solid #E5E7EB',
+                  borderRadius: 0, outline: 'none', background: 'transparent',
+                  color: '#1A1A2E', transition: '200ms ease-out',
                   fontFamily: 'Inter, sans-serif',
                 }}
-                onFocus={(e) => { (e.target as HTMLInputElement).style.borderBottom = '1.5px solid #1DB584'; }}
+                onFocus={(e) => { (e.target as HTMLInputElement).style.borderBottom = '1.5px solid var(--color-primary, #1DB584)'; }}
                 onBlur={(e) => { (e.target as HTMLInputElement).style.borderBottom = '1.5px solid #E5E7EB'; }}
               />
               <button
@@ -269,7 +237,9 @@ export default function LoginPage() {
           </div>
 
           {error && (
-            <p style={{ fontSize: 13, color: '#EF4444', marginBottom: 16, padding: '8px 12px', background: '#FEF2F2', borderRadius: 8 }}>{error}</p>
+            <p style={{ fontSize: 13, color: '#EF4444', marginBottom: 16, padding: '8px 12px', background: '#FEF2F2', borderRadius: 8 }}>
+              {error}
+            </p>
           )}
 
           {/* Submit */}
@@ -277,21 +247,12 @@ export default function LoginPage() {
             type="submit"
             disabled={isLoading}
             style={{
-              width: '100%',
-              marginTop: 28,
-              padding: '14px',
-              fontSize: 14,
-              fontWeight: 700,
-              letterSpacing: '0.04em',
+              width: '100%', marginTop: 28, padding: '14px',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.04em',
               background: isLoading ? '#9CA3AF' : 'linear-gradient(135deg, #006C4C 0%, #1DB584 100%)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: 8,
+              color: '#fff', border: 'none', borderRadius: 8,
               cursor: isLoading ? 'not-allowed' : 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 8,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               transition: '200ms ease-out',
               fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}
@@ -311,29 +272,19 @@ export default function LoginPage() {
         <button
           onClick={() => router.push('/school-select')}
           style={{
-            marginTop: 24,
-            background: 'none',
-            border: 'none',
-            color: '#9CA3AF',
-            fontSize: 13,
-            cursor: 'pointer',
-            padding: 0,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
+            marginTop: 24, background: 'none', border: 'none',
+            color: '#9CA3AF', fontSize: 13, cursor: 'pointer', padding: 0,
+            display: 'flex', alignItems: 'center', gap: 6,
           }}
         >
           Wrong school?{' '}
-          <span style={{ color: '#1DB584', fontWeight: 600 }}>Change school</span>
+          <span style={{ color: 'var(--color-primary, #1DB584)', fontWeight: 600 }}>Change school</span>
         </button>
 
-        {/* Footer */}
-        <div style={{
-          position: 'absolute',
-          bottom: 24,
-          right: 40,
-          display: 'flex',
-          gap: 20,
+        {/* Footer — desktop only */}
+        <div className="login-left-quote" style={{
+          position: 'absolute', bottom: 24, right: 40,
+          display: 'flex', gap: 20,
         }}>
           <span style={{ fontSize: 12, color: '#D1D5DB', cursor: 'pointer' }}>Privacy</span>
           <span style={{ fontSize: 12, color: '#D1D5DB', cursor: 'pointer' }}>Terms</span>

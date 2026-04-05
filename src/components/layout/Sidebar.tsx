@@ -57,11 +57,10 @@ export function Sidebar() {
   if (hide) return null;
 
   return (
-    <aside style={{
+    <aside className="desktop-only" style={{
       width: 200,
       minHeight: '100vh',
       background: '#FFFFFF',
-      display: 'flex',
       flexDirection: 'column',
       padding: '24px 16px',
       flexShrink: 0,
