@@ -72,3 +72,103 @@ body {
 ::-webkit-scrollbar       { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+
+/* ── Responsive Nav Visibility ─────────────────────────────── */
+/* Sidebar shows on desktop only (≥ 769px)                      */
+/* BottomNav shows on mobile only (≤ 768px)                     */
+.desktop-only {
+  display: flex;
+}
+.mobile-only {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* ── Mobile page padding (clears BottomNav) ────────────────── */
+/* On mobile, student pages need bottom padding so nav doesn't  */
+/* overlap content. On desktop the sidebar handles layout.      */
+.page-with-bottom-nav {
+  padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .page-with-bottom-nav {
+    padding-bottom: 72px;
+  }
+
+  /* On mobile, the root body should stack, not flex row */
+  body {
+    flex-direction: column;
+  }
+}
+
+/* ── Login page responsive layout ──────────────────────────── */
+.login-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left branding panel — hidden on mobile */
+.login-left {
+  width: 38%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Right form panel */
+.login-right {
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 64px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  /* Collapse the left panel into a compact top bar on mobile */
+  .login-left {
+    width: 100%;
+    min-width: unset;
+    padding: 24px 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    min-height: unset;
+  }
+
+  /* Hide the quote card and footer text on mobile — keep only logo row */
+  .login-left-quote,
+  .login-left-footer {
+    display: none;
+  }
+
+  .login-right {
+    flex: 1;
+    padding: 28px 20px 40px;
+    justify-content: flex-start;
+  }
+}
+

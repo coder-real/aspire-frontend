@@ -1,43 +1,37 @@
-'use client';
-
-import { useAuth } from '@/hooks/useAuth';
-import { useTheme } from '@/hooks/useTheme';
+import React from 'react';
 
 interface PageHeaderProps {
   title: string;
+  subtitle?: string;
+  action?: React.ReactNode;
 }
 
-export function PageHeader({ title }: PageHeaderProps) {
-  const { logout } = useAuth();
-  const { config } = useTheme();
-
+export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
   return (
-    <header style={{
-      background: 'var(--color-primary)',
-      color: '#fff',
-      padding: '16px',
+    <div style={{
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center',
+      alignItems: 'flex-end',
+      marginBottom: 24,
     }}>
       <div>
-        <p style={{ fontSize: 12, opacity: 0.8, margin: 0 }}>{config?.name ?? ''}</p>
-        <h1 style={{ fontSize: 18, fontWeight: 600, margin: 0 }}>{title}</h1>
+        <h1 style={{
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontSize: 24,
+          fontWeight: 800,
+          color: '#1A1A2E',
+          letterSpacing: '-0.02em',
+          lineHeight: 1.2,
+        }}>
+          {title}
+        </h1>
+        {subtitle && (
+          <p style={{ fontSize: 13, color: '#9CA3AF', marginTop: 4, fontFamily: 'Inter, sans-serif' }}>
+            {subtitle}
+          </p>
+        )}
       </div>
-      <button
-        onClick={logout}
-        style={{
-          background: 'rgba(255,255,255,0.2)',
-          border: 'none',
-          color: '#fff',
-          padding: '6px 12px',
-          borderRadius: 6,
-          cursor: 'pointer',
-          fontSize: 13,
-        }}
-      >
-        Sign out
-      </button>
-    </header>
+      {action && <div>{action}</div>}
+    </div>
   );
 }
